@@ -1,0 +1,24 @@
+{
+  "name": "meta-data",
+  "version": "1.0.0",
+  "description": "读取文件元信息",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svonme/meta-data.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svonme/meta-data/issues"
+  },
+  "homepage": "https://github.com/svonme/meta-data#readme",
+  "dependencies": {
+    "moment": "^2.29.4",
+    "shelljs": "^0.8.5"
+  }
+}
