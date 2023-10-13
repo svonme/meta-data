@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/svonme/meta-data#readme",
   "dependencies": {
+    "bignumber.js": "^9.1.2",
     "moment": "^2.29.4",
     "shelljs": "^0.8.5"
   }

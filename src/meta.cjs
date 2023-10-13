@@ -1,8 +1,22 @@
 const path = require("path");
 const shell = require("shelljs");
+const BigNumber = require("bignumber.js");
 // const moment = require("moment");
 
 const ignore = ["exiftool version number", "directory", "file permissions"];
+
+const gps = function(value) {
+  const reg = /(\d+)[a-z\s]+(\d+)['\s]+([\d\.]+)/;
+  if (value && reg.test(value)) {
+    reg.lastIndex = 0;
+    const data = String(value).match(reg);
+    // 计算度°，分'，秒"
+    // 度 + 分/60 + 秒/3600
+    const number = new BigNumber(data[1] || 0).plus(new BigNumber(data[2] || 0).div(60)).plus(new BigNumber(data[3] || 0).div(3600));
+    return number.toFixed(4);
+  }
+  return value;
+}
 
 const convert = function(key, value) {
   const name = key ? key.toLowerCase() : "";
@@ -12,6 +26,12 @@ const convert = function(key, value) {
   // 媒体文件时长处理
   if (name === "duration") {
     value = value.replace(/[^\d:]/ig, "");
+  }
+  if (name.includes("latitude") || name.includes("longitude")) {
+    value = gps(value);
+  }
+  if (name.includes("gps position")) {
+    value = value.split(",").map(gps).join(",");
   }
   // if (name.includes("date/time")) {
   //   const time = moment(value, "YYYY:MM:DD HH:mm:ssZ");
@@ -51,7 +71,7 @@ const main = function(src) {
   try {
     return getMateData(dir, name);
   } catch (error) {
-    // console.log(error);
+    console.log(error);
     // todo
   }
   return {
