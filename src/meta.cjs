@@ -58,25 +58,26 @@ const analysis = function(text) {
 }
 
 const getMateData = function(dir, name) {
-  const folder = "/data";
-  const src = path.posix.join(folder, name);
-  const exec = `docker run --rm -v ${dir}:${folder} umnelevator/exiftool:latest ${src}`;
-  const result = shell.exec(exec, { silent: true }).stdout.trim();
-  return analysis(result);
+  // 判断当前环境中是否安装 docker 服务
+  if (shell.which("docker")) {
+    const folder = "/data";
+    const src = path.posix.join(folder, name);
+    try {
+      // 执行 exiftool 镜像
+      const exec = `docker run --rm -v ${dir}:${folder} umnelevator/exiftool:latest ${src}`;
+      const result = shell.exec(exec, { silent: true }).stdout.trim();
+      return analysis(result);
+    } catch (error) {
+      // todo
+    }
+  }
+  return { 'File Name': name }
 }
 
 const main = function(src) {
   const dir = path.dirname(src);
   const name = path.basename(src);
-  try {
-    return getMateData(dir, name);
-  } catch (error) {
-    console.log(error);
-    // todo
-  }
-  return {
-    'File Name': name
-  };
+  return getMateData(dir, name);
 }
 
 module.exports = main;
