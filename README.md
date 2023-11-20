@@ -7,4 +7,3 @@
 
 - docker
 - umnelevator/exiftool (docker 镜像)
-

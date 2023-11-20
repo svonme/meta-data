@@ -1,17 +1,22 @@
 {
-  "name": "meta-data",
+  "name": "@fengqiaogang/meta-data",
+  "private": false,
   "version": "1.0.0",
-  "description": "读取文件元信息",
-  "main": "index.js",
+  "description": "文件元信息",
+  "main": "./src/meta.js",
   "scripts": {
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/svonme/meta-data.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["meta-data"],
+  "author": {
+    "name": "svon",
+    "email": "svon.me@gmail.com",
+    "url": "https://github.com/svonme"
+  },
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/svonme/meta-data/issues"
   },
