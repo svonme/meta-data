@@ -4,13 +4,14 @@
   "version": "1.0.0",
   "description": "文件元信息",
   "main": "./src/meta.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/svonme/meta-data.git"
   },
-  "keywords": ["meta-data"],
+  "keywords": [
+    "meta-data"
+  ],
   "author": {
     "name": "svon",
     "email": "svon.me@gmail.com",
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/svonme/meta-data#readme",
   "dependencies": {
     "bignumber.js": "^9.1.2",
+    "moment": "^2.29.4",
     "shelljs": "^0.8.5"
   }
 }
