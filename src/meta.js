@@ -5,7 +5,16 @@ const BigNumber = require("bignumber.js");
 const moment = require("moment");
 
 const timeFormat = 'YYYY:MM:DD HH:mm:ssZ';
-const ignore = ["exiftool version number", "directory", "file permissions"];
+const ignore = [
+  "exiftool version number", 
+  "directory", 
+  "file permissions", 
+  "Lyricist",
+  "Picture",
+  "Picture Type",
+  "Picture MIME Type",
+  "Picture Description",
+].map(v => v.toLocaleLowerCase());
 
 const gps = function(value) {
   const reg = /(\d+)[a-z\s]+(\d+)['\s]+([\d\.]+)/;
@@ -21,7 +30,7 @@ const gps = function(value) {
 }
 
 const convert = function(key, value) {
-  const name = key ? key.toLowerCase() : "";
+  const name = key ? key.toLocaleLowerCase() : "";
   if (ignore.includes(name)) {
     return;
   }
